@@ -1,0 +1,13 @@
+{
+  "name": "plan-to-video",
+  "version": "0.1.0",
+  "description": "Turns a plan, research note or list of open decisions into a narrated explainer video (MP4), built on HyperFrames.",
+  "author": {
+    "name": "Facundo Exposito",
+    "url": "https://github.com/facundoexposito"
+  },
+  "homepage": "https://github.com/facundoexposito/plan-to-video",
+  "repository": "https://github.com/facundoexposito/plan-to-video",
+  "license": "MIT",
+  "keywords": ["video", "explainer", "hyperframes", "plan", "decisions", "skill"]
+}

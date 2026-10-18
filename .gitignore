@@ -1,0 +1,17 @@
+# Video projects and render output
+videos/
+renders/
+.hyperframes/
+*.mp4
+!demo/*.mp4
+
+# Dependencies and caches
+node_modules/
+.venv/
+__pycache__/
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
