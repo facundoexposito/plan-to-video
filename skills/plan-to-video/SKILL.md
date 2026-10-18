@@ -6,7 +6,7 @@ description: >-
 
 # Plan to video
 
-Turns a written plan into a 1 to 3 minute narrated explainer: the hook, the problem, the proposal, the mechanism, then one frame per open decision (question plus 2 to 4 options) and a closing ask.
+Turns a written plan into a narrated explainer (about 60 to 90 s for a social post, 2 to 2.5 min for a real plan with several decisions): the hook, the problem, the proposal, the mechanism, then one frame per open decision (question plus 2 to 4 options) and a closing ask.
 
 This skill does not re-implement HyperFrames. It decides the brief, the story shape and the setup, then runs the installed `/faceless-explainer` workflow step by step, adding fixes at the points where the default pipeline tends to break. Read `/hyperframes` and `/faceless-explainer` as they instruct; this file tells you what to answer and what to patch.
 
@@ -33,7 +33,7 @@ Read the source first (the plan doc, the research note, the chat). Then propose 
 | `angle` | `listicle` (one of the route's values: concept, how-to, listicle, narrative) | a plan is "why it matters, how it works, N decisions" |
 | storyboard `arc` | `concept-explainer with listicle` | free text in `STORYBOARD.md`, not a brief enum |
 | `aspect` | `1920x1080` | watched on a laptop or in a call; option cards need width |
-| `length` | 90 to 150 s, hard cap 180 s | faceless-explainer's sweet spot is 30 to 90 s; a plan with many decisions runs longer. About 10 s per decision plus intro and close |
+| `length` | 2 to 2.5 min for a real plan with several decisions; about 60 to 90 s for a social post. Hard cap 180 s | faceless-explainer's sweet spot is 30 to 90 s; a plan with many decisions runs longer. About 10 s per decision plus intro and close |
 | `language` / voice | the source's language; Kokoro `am_michael` for English | local and free. Non-English Kokoro voices need `espeak-ng` |
 | `flow` / `storyboard` | `automation` / `no` (autonomous) | offer the storyboard review when the plan is high stakes |
 | look | the project's own brand when the video is about a repo, else a fitting preset | the video should look like the thing it explains |
@@ -41,6 +41,8 @@ Read the source first (the plan doc, the research note, the chat). Then propose 
 | project | `$VIDEOS_DIR/<kebab-topic>/` | one folder per video |
 
 Ask, at most: who will watch it (it sets how technical the copy gets), and whether a recommended option should be marked on each decision (the accent "lean" edge).
+
+Recommended option rule: mark the option the source recommends. When no single option wins, mark nothing; when the decision is "support several", mark every option that is part of that answer. When the source does not say, recommend this skill's own defaults (the values in the table above) instead of inventing a preference.
 
 `BRIEF.md` is written in Step 0, **after** `npx hyperframes init` (init refuses a non-empty folder), in the shape `/hyperframes` `references/brief-format.md` describes, with what the user said and what you inferred kept apart.
 
@@ -63,23 +65,25 @@ Write the voiceover as short cue phrases (6 to 25 words per frame) so each optio
 Follow `/faceless-explainer` Steps 0 to 6 in order. At each step apply the matching patch from `references/gotchas.md`. The ones that bite when skipped:
 
 - **Step 0:** init inside `$VIDEOS_DIR`'s parent so the project lands at `$VIDEOS_DIR/<topic>`, then write `BRIEF.md`. Signed out of HeyGen is fine: voice runs on Kokoro locally.
-- **Step 2 design:** for a repo, put its colors and fonts in `capture/extracted/tokens.json` before `build-frame.mjs`. If the brand is dark and the preset is light, invert the roles in `frame.md`.
+- **Step 2 design:** for a repo, put its colors and fonts in `capture/extracted/tokens.json` and stage the real `.woff2` files in `assets/fonts/` **before** `build-frame.mjs` (it then writes the `@font-face` block itself). Get fonts from the brand's own site files, a Google Fonts download, or a font package in `node_modules`. If the brand is dark and the preset is light, invert the roles in `frame.md`, replace preset glyphs the embedded font may lack, and swap a preset accent that belongs to another brand for the user's own (`references/gotchas.md`, Step 2).
 - **Step 3.1 audio:** pass `HYPERFRAMES_PYTHON` on every audio command unless the default `python3` already imports `kokoro_onnx`.
 - **Timings:** let audio finish and run `audio.mjs sync-durations` before you write Step 4's Scene windows, then pace every reveal from the real word timings in `audio_meta.json`. (faceless-explainer runs sync-durations at Step 5; moving it earlier is deliberate.)
-- **Before Step 5 dispatch:** if the brand swapped in fonts the preset does not ship, stage the real font files in `assets/fonts/` and give every worker the exact filenames. Give the question-stage frames the shared spec verbatim. Ban emoji.
+- **Breathing room:** sync-durations sets each frame to its exact voice length, so the last frame and the signpost end abruptly. Right after sync, edit `- duration:` in `STORYBOARD.md`: final frame +2 to 3 s, signpost and other breather frames +1 s. Do it before building packets so workers animate against the padded windows.
+- **Caption words:** captions come from a transcription of the audio, not from `SCRIPT.md`, so product names get misheard. Before captions are built, compare the word list in `audio_meta.json` (`voices[].words[].text`) against `SCRIPT.md` and correct misheard words in place, keeping their timings.
+- **Before Step 5 dispatch:** give every worker the exact font filenames staged in Step 2. Packets omit the storyboard's `## Video direction` block and the full word timings, so paste both into each worker's dispatch context. Give the question-stage frames the shared spec verbatim. Ban emoji.
 - **Step 5:** one worker per frame, in parallel when your agent supports sub-agents (a faster model is fine for workers), each with `_role.md`, its packet and the dispatch context.
 - **After workers:** normalize asset paths, fix lint warnings that are real seek bugs, run `check`, snapshot, look at the contact sheet.
 
 ## 4. Quality gates (all before render)
 
-- `npx hyperframes lint` with 0 errors. `studio_missing_editable_id` warnings are cosmetic; `gsap_repeated_fromto_without_baseline` is a real bug, fix it.
+- `npx hyperframes lint` with 0 errors. `studio_missing_editable_id` warnings are cosmetic; `gsap_repeated_fromto_without_baseline` is a real bug, fix it (`references/gotchas.md`, Step 6).
 - `npx hyperframes check` passes.
 - `npx hyperframes snapshot --at <each frame's midpoint>` and actually look at the contact sheet: dark text on a dark ground, missing fonts (serif fallback), clipped cards and emoji tofu all show up there.
-- If the user has a house style (for example "no em dashes"), check the strings that are spoken or shown on screen: the `- voiceover:` lines, the SCRIPT.md line bodies and the text in `compositions/frames/*.html`. Leave the `## Frame N` and `## Line N` heading separators alone: storyboard-format.md and script-format.md define them with a long dash and the parsers expect it.
+- If the user has a house style (for example "no em dashes"), check every string: the `- voiceover:` lines, the SCRIPT.md lines, the text in `compositions/frames/*.html`, and the headings too. Write headings with a colon (`## Frame 1: Hook`, `## Line 1: Hook (Frame 1)`); the storyboard and script parsers accept it, so no dash is ever needed.
 
 ## 5. Review, render, hand off
 
-faceless-explainer's Step 6 keeps one question even in autonomous mode: open `npx hyperframes preview --background` and ask "render now, or what changes?". Then:
+faceless-explainer's Step 6 keeps one question even in autonomous mode: open `npx hyperframes preview --background` and ask "render now, or what changes?". Skip that question when the user asked for a one-shot render. Then:
 
 `npx hyperframes render --skill=faceless-explainer --quality high --output renders/video.mp4` (`--skill` only tags anonymous render telemetry; `high` is an alias of `delivery`)
 

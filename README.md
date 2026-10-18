@@ -2,12 +2,11 @@
 
 A Claude Code skill that turns a written plan into a narrated explainer video (MP4).
 
-Give it a plan doc, a research note, a proposal or a list of open decisions. It writes a short story (hook, problem, proposal, how it works, one frame per decision with its options, closing ask), generates a local voiceover, builds each frame as an animated HTML composition, and renders a 1 to 3 minute 1920x1080 video.
+Give it a plan doc, a research note, a proposal or a list of open decisions. It writes a short story (hook, problem, proposal, how it works, one frame per decision with its options, closing ask), generates a local voiceover, builds each frame as an animated HTML composition, and renders a 1920x1080 video: about 60 to 90 s for a social post, 2 to 2.5 min for a real plan with several decisions.
 
-<!-- Demo: replace this block once the demo is recorded.
 [![plan-to-video demo](demo/preview.gif)](demo/plan-to-video-demo.mp4)
--->
-**Demo:** coming soon, see [`demo/`](demo/).
+
+Made with plan-to-video from its own launch plan. Click the preview for the full [80 s MP4](demo/plan-to-video-demo.mp4) with voice.
 
 It is a thin layer on top of [HyperFrames](https://github.com/heygen-com/hyperframes) by HeyGen and its `faceless-explainer` workflow. HyperFrames does the rendering; this skill adds:
 
@@ -83,7 +82,7 @@ Point it at a source and say who will watch:
 - "Make a decision video from these five open questions, mark the option we lean to on each."
 - "Video of this migration plan, in our app's brand (colors and fonts from this repo)."
 
-It confirms the defaults in one message (16:9, about 2 minutes, English male voice, no music, autonomous), builds everything, shows you the preview and asks "render now, or what changes?". You get `videos/<topic>/renders/video.mp4`, a contact sheet, and a list of frame files so you can ask for one frame to be fixed.
+It confirms the defaults in one message (16:9, 2 to 2.5 min for a plan with several decisions or 60 to 90 s for a social post, English male voice, no music, autonomous), builds everything, shows you the preview and asks "render now, or what changes?" (skipped when you ask for a one-shot render). You get `videos/<topic>/renders/video.mp4`, a contact sheet, and a list of frame files so you can ask for one frame to be fixed.
 
 A run takes a while: frames are built in parallel by sub-agents, and the local render takes roughly 1.5x the video length.
 
@@ -109,7 +108,7 @@ skills/plan-to-video/
   SKILL.md             the skill
   references/          setup, question-stage layout, gotchas
 scripts/validate.mjs   frontmatter and manifest checks
-demo/                  demo video slot
+demo/                  demo video and README preview GIF
 ```
 
 ## Validate

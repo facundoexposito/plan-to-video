@@ -6,7 +6,7 @@ Run this once per machine, and the preflight at the start of every run. Nothing 
 
 - Node.js 20 or newer (`npx` available).
 - `ffmpeg` and `ffprobe` on PATH.
-- Chrome for headless rendering. `npx hyperframes browser --help` manages it; `npx hyperframes doctor` reports what is missing.
+- Chrome for headless rendering. `npx hyperframes browser --help` manages it; `npx hyperframes doctor` reports what is missing (run it with the `HYPERFRAMES_PYTHON=` prefix from section 4).
 - Python 3.10 or newer for local Kokoro voice, in a venv (see below).
 - Optional: `uv` (faster venv setup), `espeak-ng` (only for non-English Kokoro voices).
 - An agent that can run sub-agents in parallel (Claude Code does). Without it, frames build one by one.
@@ -63,9 +63,11 @@ Optional: `npx hyperframes auth login` signs in to HeyGen for its voices and mus
 
 ```bash
 npx hyperframes --version
-npx hyperframes doctor
-npx hyperframes auth status      # signed out is fine, Kokoro is the fallback
+HYPERFRAMES_PYTHON="$HYPERFRAMES_PYTHON" npx hyperframes doctor
+HYPERFRAMES_PYTHON="$HYPERFRAMES_PYTHON" npx hyperframes auth status   # signed out is fine, Kokoro is the fallback
 "$HYPERFRAMES_PYTHON" -c "import kokoro_onnx, soundfile; print('kokoro ok')"
 ```
+
+Keep the `HYPERFRAMES_PYTHON=` prefix on `doctor` and `auth status`: without it they report Kokoro missing even when the venv works.
 
 Telemetry: the CLI sends anonymous usage data by default. `npx hyperframes telemetry disable` (or `HYPERFRAMES_NO_TELEMETRY=1` / `DO_NOT_TRACK=1`) turns it off. Tell the user once if they have not chosen.
