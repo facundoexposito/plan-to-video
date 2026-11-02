@@ -73,7 +73,7 @@ for (const dir of skills) {
   // and every file in references/ must be listed there. (Mentions of upstream HyperFrames
   // references elsewhere in the body are not checked.)
   const section = text.split(/^## Reference files\s*$/m)[1] || "";
-  const listed = new Set(section.match(/references\/[A-Za-z0-9_.-]+\.md/g) || []);
+  const listed = new Set((section.match(/references\/[A-Za-z0-9_.-]+(?:\.md|\/)/g) || []).map((r) => r.replace(/\/$/, "")));
   for (const ref of listed) {
     if (!existsSync(join(skillsDir, dir, ref))) fail(`${rel}: lists ${ref}, which does not exist`);
   }

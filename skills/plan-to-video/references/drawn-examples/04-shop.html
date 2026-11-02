@@ -1,0 +1,121 @@
+<template>
+  <div id="root" data-composition-id="04-shop" data-start="0" data-duration="14.281" data-width="1920" data-height="1080">
+    <style>
+      @font-face{font-family:"Geist";font-weight:100 900;font-style:normal;font-display:block;src:url("assets/fonts/Geist-Regular.woff2") format("woff2");}
+      @font-face{font-family:"JetBrains Mono";font-weight:100 800;font-style:normal;font-display:block;src:url("assets/fonts/JetBrainsMono-Regular.woff2") format("woff2");}
+      #root{position:relative;width:1920px;height:1080px;overflow:hidden;font-family:"Geist",system-ui,sans-serif;color:#F2EEE6;}
+      #root .s4-bg{position:absolute;left:0;top:0;width:1920px;height:1080px;background-color:#121110;
+        background-image:linear-gradient(to right,rgba(242,238,230,0.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(242,238,230,0.04) 1px,transparent 1px);
+        background-size:80px 80px;}
+      #root .s4-kicker{position:absolute;left:80px;top:80px;height:34px;display:flex;align-items:center;gap:18px;font-family:"JetBrains Mono","Geist",system-ui,sans-serif;font-weight:500;font-size:28px;line-height:34px;letter-spacing:0.16em;text-transform:uppercase;color:#A9A399;opacity:0;}
+      #root .s4-sq{width:12px;height:12px;background:#C9A55A;flex:none;}
+      #root .s4-head{position:absolute;left:80px;top:160px;font-size:72px;font-weight:400;line-height:1.06;letter-spacing:-0.018em;color:#F2EEE6;white-space:nowrap;}
+      #root .s4-w{display:inline-block;margin-right:0.26em;opacity:0;}
+      #root .s4-art{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:visible;}
+      #root .s4-card{position:absolute;top:620px;width:340px;height:200px;box-sizing:border-box;background:#22201D;border:1px solid rgba(242,238,230,0.09);border-radius:12px;opacity:0;}
+      #root .s4-hole{position:absolute;left:-1px;top:-1px;}
+      #root .s4-offer{position:absolute;left:20px;top:50px;font-family:"JetBrains Mono","Geist",system-ui,sans-serif;font-weight:500;font-size:20px;line-height:20px;letter-spacing:0.12em;color:#8A847A;}
+      #root .s4-pill{position:absolute;right:19px;top:43px;height:32px;box-sizing:border-box;display:flex;align-items:center;gap:8px;padding:0 14px;background:#2C2415;border:1.5px solid #C9A55A;border-radius:9999px;font-family:"JetBrains Mono","Geist",system-ui,sans-serif;font-size:18px;line-height:1;color:#D9B86E;white-space:nowrap;opacity:0;}
+      #root .s4-row{position:absolute;left:20px;top:122px;display:flex;align-items:center;gap:14px;font-size:28px;line-height:34px;color:#F2EEE6;white-space:nowrap;}
+      #root .s4-t{opacity:0;}
+    </style>
+
+    <div id="s4-bg" class="clip s4-bg" data-start="0" data-duration="14.281" data-track-index="0"></div>
+
+    <div class="s4-kicker" id="s4-kicker"><span class="s4-sq"></span><span>The proposal</span></div>
+    <div class="s4-head" id="s4-head"><span class="s4-w">Built</span><span class="s4-w">like</span><span class="s4-w">a</span><span class="s4-w">shop</span></div>
+
+    <svg class="s4-art" id="s4-art" viewBox="0 0 1920 1080" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path id="s4-scfill" d="" fill="#22201D" stroke="none" opacity="0"/>
+      <g stroke="#A9A399" stroke-width="2" fill="none">
+        <path class="s4-shop" d="M200 340 L960 290 L1720 340" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" opacity="0"/>
+        <path class="s4-shop" d="M200 340 H1720" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" opacity="0"/>
+        <path class="s4-shop" id="s4-scal" d="" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" opacity="0"/>
+        <path class="s4-shop" d="M200 340 V880" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" opacity="0"/>
+        <path class="s4-shop" d="M1720 340 V880" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" opacity="0"/>
+        <path class="s4-shop" d="M170 880 H1750" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" opacity="0"/>
+      </g>
+      <path id="s4-signfill" d="M700 395 H1190 L1220 425 V545 H700 Z" fill="#22201D" stroke="none" opacity="0"/>
+      <g stroke="#F2EEE6" stroke-width="2.5" fill="none">
+        <path id="s4-sign" d="M700 395 H1190 L1220 425 V545 H700 Z" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" opacity="0"/>
+        <path id="s4-fold" d="M1190 395 V425 H1220" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" opacity="0"/>
+        <path class="s4-glyph" d="M740 488 a22 22 0 1 0 44 0 a22 22 0 1 0 -44 0" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" opacity="0"/>
+        <path class="s4-glyph" d="M762 488 V474 M762 488 L772 494" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" opacity="0"/>
+        <path class="s4-glyph" d="M754 468 L756 452 H768 L770 468" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" opacity="0"/>
+        <path class="s4-glyph" d="M754 508 L756 524 H768 L770 508" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" opacity="0"/>
+      </g>
+      <text id="s4-signlab" x="724" y="430" font-family="JetBrains Mono, Geist, sans-serif" font-weight="500" font-size="20" letter-spacing="2.4" fill="#A9A399" stroke="none" opacity="0">CATALOGUE PAGE</text>
+      <text id="s4-signname" x="816" y="500" font-family="Geist, system-ui, sans-serif" font-size="36" fill="#F2EEE6" stroke="none" opacity="0">Watch model</text>
+      <g stroke="#A9A399" stroke-width="1.5" fill="none">
+        <path id="s4-stem" d="M960 545 V560" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" opacity="0"/>
+        <path id="s4-rail" d="M500 560 H1420" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" opacity="0"/>
+        <path class="s4-str" d="M500 560 V620" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" opacity="0"/>
+        <path class="s4-str" d="M960 560 V620" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" opacity="0"/>
+        <path class="s4-str" d="M1420 560 V620" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" opacity="0"/>
+      </g>
+    </svg>
+
+    <div class="s4-card" id="s4-c0" style="left:330px">
+      <svg class="s4-hole" width="340" height="40" viewBox="0 0 340 40"><path d="M170 0 V16" fill="none" stroke="#A9A399" stroke-width="1.5" stroke-linecap="round"/><circle cx="170" cy="22" r="6" fill="#121110" stroke="#A9A399" stroke-width="2"/></svg>
+      <div class="s4-offer">OFFER</div>
+      <div class="s4-pill" id="s4-p0"><svg width="14" height="16" viewBox="0 0 14 16" style="overflow:visible"><g id="s4-sh0"><path d="M3.5 7 V4.5 a3.5 3.5 0 0 1 7 0 V7" fill="none" stroke="#D9B86E" stroke-width="1.8" stroke-linecap="round"/></g><rect x="1" y="7" width="12" height="9" rx="2" fill="#D9B86E"/></svg><span>stable id</span></div>
+      <div class="s4-row"><span class="s4-t" id="s4-w0">1 watch</span><svg class="s4-t" id="s4-d0" width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3" fill="#8A847A"/></svg><span class="s4-t" id="s4-s0">1 seller</span></div>
+    </div>
+    <div class="s4-card" id="s4-c1" style="left:790px">
+      <svg class="s4-hole" width="340" height="40" viewBox="0 0 340 40"><path d="M170 0 V16" fill="none" stroke="#A9A399" stroke-width="1.5" stroke-linecap="round"/><circle cx="170" cy="22" r="6" fill="#121110" stroke="#A9A399" stroke-width="2"/></svg>
+      <div class="s4-offer">OFFER</div>
+      <div class="s4-pill" id="s4-p1"><svg width="14" height="16" viewBox="0 0 14 16" style="overflow:visible"><g id="s4-sh1"><path d="M3.5 7 V4.5 a3.5 3.5 0 0 1 7 0 V7" fill="none" stroke="#D9B86E" stroke-width="1.8" stroke-linecap="round"/></g><rect x="1" y="7" width="12" height="9" rx="2" fill="#D9B86E"/></svg><span>stable id</span></div>
+      <div class="s4-row"><span class="s4-t" id="s4-w1">1 watch</span><svg class="s4-t" id="s4-d1" width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3" fill="#8A847A"/></svg><span class="s4-t" id="s4-s1">1 seller</span></div>
+    </div>
+    <div class="s4-card" id="s4-c2" style="left:1250px">
+      <svg class="s4-hole" width="340" height="40" viewBox="0 0 340 40"><path d="M170 0 V16" fill="none" stroke="#A9A399" stroke-width="1.5" stroke-linecap="round"/><circle cx="170" cy="22" r="6" fill="#121110" stroke="#A9A399" stroke-width="2"/></svg>
+      <div class="s4-offer">OFFER</div>
+      <div class="s4-pill" id="s4-p2"><svg width="14" height="16" viewBox="0 0 14 16" style="overflow:visible"><g id="s4-sh2"><path d="M3.5 7 V4.5 a3.5 3.5 0 0 1 7 0 V7" fill="none" stroke="#D9B86E" stroke-width="1.8" stroke-linecap="round"/></g><rect x="1" y="7" width="12" height="9" rx="2" fill="#D9B86E"/></svg><span>stable id</span></div>
+      <div class="s4-row"><span class="s4-t" id="s4-w2">1 watch</span><svg class="s4-t" id="s4-d2" width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3" fill="#8A847A"/></svg><span class="s4-t" id="s4-s2">1 seller</span></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script>
+      (function () {
+        var d = "M200 340", i;
+        for (i = 0; i < 19; i++) d += " a40 28 0 0 0 80 0";
+        document.getElementById("s4-scal").setAttribute("d", d);
+        document.getElementById("s4-scfill").setAttribute("d", d + " Z");
+        var tl = gsap.timeline({ paused: true });
+        function draw(sel, t, dur, ease, stag) {
+          tl.fromTo(sel, { opacity: 0 }, { opacity: 1, duration: 0.05, stagger: stag || 0 }, t);
+          tl.fromTo(sel, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: dur, ease: ease || "power2.inOut", stagger: stag || 0 }, t);
+        }
+        function fade(sel, t, dur) { tl.fromTo(sel, { opacity: 0 }, { opacity: 1, duration: dur || 0.5, ease: "power2.out" }, t); }
+        function up(sel, t, dur, dy, stag) {
+          tl.fromTo(sel, { opacity: 0, y: dy || 18 }, { opacity: 1, y: 0, duration: dur || 0.55, ease: "power3.out", stagger: stag || 0 }, t);
+        }
+        up("#s4-kicker", 0.06, 0.5, 12);
+        var words = document.querySelectorAll("#s4-head .s4-w");
+        [1.63, 2.04, 2.38, 2.45].forEach(function (t, k) { up(words[k], t, 0.45, 24); });
+        draw(".s4-shop", 1.63, 1.2, "power2.inOut");
+        fade("#s4-scfill", 2.6, 0.6);
+        draw("#s4-sign", 4.22, 0.8, "power2.inOut");
+        draw("#s4-fold", 4.6, 0.4, "power2.inOut");
+        fade("#s4-signfill", 4.8, 0.5);
+        up("#s4-signlab", 4.9, 0.5, 10);
+        draw(".s4-glyph", 5.4, 0.6, "power2.inOut", 0.08);
+        up("#s4-signname", 5.6, 0.55, 16);
+        draw("#s4-stem", 6.83, 0.15, "power2.out");
+        draw("#s4-rail", 6.9, 0.2, "power2.inOut");
+        draw(".s4-str", 7.0, 0.3, "power2.out");
+        [0, 1, 2].forEach(function (k) {
+          tl.fromTo("#s4-c" + k, { opacity: 0, y: -60 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 7.58 + k * 0.15);
+          up("#s4-w" + k, 9.71 + k * 0.1, 0.5, 14);
+          up("#s4-d" + k, 11.18 + k * 0.1, 0.5, 14);
+          up("#s4-s" + k, 11.18 + k * 0.1, 0.5, 14);
+          tl.fromTo("#s4-p" + k, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.35, ease: "power3.out" }, 12.22 + k * 0.1);
+          tl.fromTo("#s4-sh" + k, { y: -6 }, { y: -6, duration: 0.01 }, 0);
+          tl.to("#s4-sh" + k, { y: 0, duration: 0.25, ease: "power3.out" }, 12.68 + k * 0.06);
+        });
+        window.__timelines = window.__timelines || {};
+        window.__timelines["04-shop"] = tl;
+      })();
+    </script>
+  </div>
+</template>
